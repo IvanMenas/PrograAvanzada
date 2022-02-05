@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Xml;
+using Newtonsoft.Json;
 
 namespace Ent_Semana3.Controllers
 {
@@ -75,6 +76,9 @@ namespace Ent_Semana3.Controllers
                 apiResponse response = new apiResponse();
                 response.codigoRespuesta = requestParam.Indicador;
                 response.xmlResponse = WSResponse;
+                XmlDocument xmlDoc = new XmlDocument();
+                xmlDoc.LoadXml(WSResponse);
+                string json = JsonConvert.SerializeXmlNode(xmlDoc);
                 return response;
             }
             catch (Exception)

@@ -56,17 +56,20 @@ namespace Ent_Semana3.Controllers
                 response.xml = WSResponse;
                 response.json = json;
 
-                XmlSerializer serializer = new XmlSerializer(typeof(TiposCambio));
-                using (StringReader reader = new StringReader(WSResponse))
-                {
-                    var tiposCambio = (TiposCambio)serializer.Deserialize(reader);
+                //This is useful as we parse from XML to an object
+                //XmlSerializer serializer = new XmlSerializer(typeof(TiposCambio));
+                //using (StringReader reader = new StringReader(WSResponse))
+                //{
+                //    var tiposCambio = (TiposCambio)serializer.Deserialize(reader);
 
-                    foreach (TipoCambio tipoCambio in tiposCambio.List)
-                    {
-                        logicTipoCambio.Insert(tipoCambio);
-                    }
+                //    foreach (TipoCambio tipoCambio in tiposCambio.List)
+                //    {
+                //        logicTipoCambio.Insert(tipoCambio);
+                //    }
 
-                }
+                //}
+
+                logicTipoCambio.InsertXML(WSResponse, Int32.Parse(requestParam.Indicador));
 
                 return response;
             }
@@ -114,17 +117,21 @@ namespace Ent_Semana3.Controllers
                 response.xml = WSResponse;
                 response.json = json;
 
-                XmlSerializer serializer = new XmlSerializer(typeof(TiposCambio));
-                using (StringReader reader = new StringReader(WSResponse))
-                {
-                    var tiposCambio = (TiposCambio)serializer.Deserialize(reader);
+                //This is useful as we parse from XML to an object
+                //XmlSerializer serializer = new XmlSerializer(typeof(TiposCambio));
+                //using (StringReader reader = new StringReader(WSResponse))
+                //{
+                //    var tiposCambio = (TiposCambio)serializer.Deserialize(reader);
 
-                    foreach (TipoCambio tipoCambio in tiposCambio.List)
-                    {
-                        logicTipoCambio.Insert(tipoCambio);
-                    }
+                //    foreach (TipoCambio tipoCambio in tiposCambio.List)
+                //    {
+                //        logicTipoCambio.Insert(tipoCambio);
 
-                }
+                //    }
+
+                //}
+
+                logicTipoCambio.InsertXML(WSResponse, Int32.Parse(requestParam.Indicador));
 
                 return response;
             }

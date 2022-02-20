@@ -12,11 +12,13 @@ namespace Ent_Semana3.Database
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
-    public partial class LN_DBEntities : DbContext
+    public partial class LN_DBEntities1 : DbContext
     {
-        public LN_DBEntities()
-            : base("name=Quiz1")
+        public LN_DBEntities1()
+            : base("name=LN_DBEntities1")
         {
         }
     
@@ -26,5 +28,18 @@ namespace Ent_Semana3.Database
         }
     
         public virtual DbSet<T_TIPOCAMBIO> T_TIPOCAMBIO { get; set; }
+    
+        public virtual int InsertTipoCambio(string datos, Nullable<int> indicador)
+        {
+            var datosParameter = datos != null ?
+                new ObjectParameter("Datos", datos) :
+                new ObjectParameter("Datos", typeof(string));
+    
+            var indicadorParameter = indicador.HasValue ?
+                new ObjectParameter("Indicador", indicador) :
+                new ObjectParameter("Indicador", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertTipoCambio", datosParameter, indicadorParameter);
+        }
     }
 }

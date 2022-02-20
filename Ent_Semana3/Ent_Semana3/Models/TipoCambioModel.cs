@@ -11,7 +11,7 @@ namespace Ent_Semana3.Models
     {
         public void Insert(TipoCambio objParam)
         {
-            using (var contex = new LN_DBEntities())
+            using (var contex = new LN_DBEntities1())
             {
                 try
                 {
@@ -33,7 +33,25 @@ namespace Ent_Semana3.Models
             }
         }
 
-        
+        public void InsertXML(String xml, int indicador)
+        {
+            using (var contex = new LN_DBEntities1())
+            {
+                try
+                {
+                    contex.InsertTipoCambio(xml, indicador);
+                    contex.SaveChanges();
+                    contex.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    contex.Dispose();
+                    throw ex;
+                }
+            }
+        }
+
+
 
     }
 }

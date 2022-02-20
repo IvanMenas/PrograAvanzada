@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="LN_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="LN_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="T_TIPOCAMBIO">
           <Key>
             <PropertyRef Name="CONSECUTIVO" />
@@ -21,7 +21,8 @@
         <EntityContainer Name="LN_DBModelStoreContainer">
           <EntitySet Name="T_TIPOCAMBIO" EntityType="Self.T_TIPOCAMBIO" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="LN_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -34,15 +35,19 @@
           <Property Name="DES_FECHA" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="NUM_VALOR" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
         </EntityType>
-        <EntityContainer Name="LN_DBEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="LN_DBEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="T_TIPOCAMBIO" EntityType="Self.T_TIPOCAMBIO" />
+          <FunctionImport Name="InsertTipoCambio">
+            <Parameter Name="Datos" Mode="In" Type="String" />
+            <Parameter Name="Indicador" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="LN_DBModelStoreContainer" CdmEntityContainer="LN_DBEntities">
+        <EntityContainerMapping StorageEntityContainer="LN_DBModelStoreContainer" CdmEntityContainer="LN_DBEntities1">
           <EntitySetMapping Name="T_TIPOCAMBIO">
             <EntityTypeMapping TypeName="LN_DBModel.T_TIPOCAMBIO">
               <MappingFragment StoreEntitySet="T_TIPOCAMBIO">
@@ -53,6 +58,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="InsertTipoCambio" FunctionName="LN_DBModel.Store.InsertTipoCambio" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -10,18 +10,23 @@ using System.Xml;
 using Newtonsoft.Json;
 using System.Xml.Serialization;
 using System.IO;
+using Ent_Semana3.Config;
 
 namespace Ent_Semana3.Controllers
 {
     public class TipoCambioController : ApiController
     {
         TipoCambioModel logicTipoCambio = new TipoCambioModel();
+        apiConnection apiCfg = new apiConnection();
+        apiRequest apiReq = new apiRequest();
 
         public RequestParam initParamsCompra()
         {
+            apiCfg.getApiConnection();
+            apiReq.getApiRequest();
             return new RequestParam(
-                    "317", "05/09/2021", "05/02/2022", "Diego Morales", "N",
-                    "diego.morales22102001@gmail.com", "MG0MD0MGLO");
+                    apiReq.indicator, "05/09/2021", "05/02/2022", apiCfg.user, apiReq.sublevel,
+                    apiCfg.email, apiCfg.token);
         }
 
         [HttpGet]
@@ -75,9 +80,11 @@ namespace Ent_Semana3.Controllers
 
         public RequestParam initParamsVenta()
         {
+            apiCfg.getApiConnection();
+            apiReq.getApiRequest();
             return new RequestParam(
-                    "318", "05/09/2021", "05/02/2022", "Diego Morales", "N",
-                    "diego.morales22102001@gmail.com", "MG0MD0MGLO");
+                    apiReq.indicator, "05/09/2021", "05/02/2022", apiCfg.user, apiReq.sublevel,
+                     apiCfg.email, apiCfg.token);
         }
 
         [HttpGet]

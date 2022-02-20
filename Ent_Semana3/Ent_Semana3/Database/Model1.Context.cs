@@ -16,7 +16,7 @@ namespace Ent_Semana3.Database
     public partial class LN_DBEntities : DbContext
     {
         public LN_DBEntities()
-            : base("name=LN_DBEntities")
+            : base("name=Quiz1")
         {
         }
     

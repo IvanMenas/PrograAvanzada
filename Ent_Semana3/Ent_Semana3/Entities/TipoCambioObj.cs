@@ -2,14 +2,32 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Xml.Serialization;
 
 namespace Ent_Semana3.Entities
 {
-    public class TipoCambioObj
+    [XmlRoot(ElementName = "Datos_de_INGC011_CAT_INDICADORECONOMIC")]
+    public class TiposCambio
     {
-        public DateTime DES_FECHA { get; set;}
-        public int NUM_VALOR { get; set;}
+
+        [XmlElement(ElementName = "INGC011_CAT_INDICADORECONOMIC")]
+        public List<TipoCambio> List { get; set; }
     }
+
+    [XmlRoot(ElementName = "INGC011_CAT_INDICADORECONOMIC")]
+    public class TipoCambio
+    {
+
+        [XmlElement(ElementName = "COD_INDICADORINTERNO")]
+        public int CODINDICADORINTERNO { get; set; }
+
+        [XmlElement(ElementName = "DES_FECHA")]
+        public DateTime DESFECHA { get; set; }
+
+        [XmlElement(ElementName = "NUM_VALOR")]
+        public decimal NUMVALOR { get; set; }
+    }
+
     public class RequestParam
     {
         public string Indicador { get; set; }
@@ -25,7 +43,7 @@ namespace Ent_Semana3.Entities
             this.Indicador = Indicador;
             this.FechaInicio = FechaInicio; 
             this.FechaFinal = FechaFinal;
-            this. Nombre = Nombre;
+            this.Nombre = Nombre;
             this.SubNiveles = SubNiveles;
             this.CorreoElectronico = CorreoElectronico;
             this.Token = Token;
@@ -34,7 +52,8 @@ namespace Ent_Semana3.Entities
 
     public class apiResponse
     {
-        public string codigoRespuesta { get; set; }
-        public string xmlResponse { get; set; }
+        public string code { get; set; }
+        public string xml { get; set; }
+        public string json { get; set; }
     }
 }

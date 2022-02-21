@@ -22,16 +22,27 @@ namespace Ent_Semana3.Controllers
         const string reqTipoCambioVenta_1DayByMonth = "400301";
         const string reqTipoCambioVenta_15DayByMonth = "400315";
         const string reqTipoCambioVenta_LastDayByMonth = "400331";
+        public  String Date_6Months_Ago()
+        {
+            return DateTime.Now.AddMonths(-6).ToString("d/M/yyyy");
+
+        }
+        public String Date_Today()
+        {
+            return DateTime.Now.ToString("d/M/yyyy");
+
+        }
 
         public RequestParam initParamsCompra()
         {
             apiCfg.getApiConnection();
             apiReq.getApiRequest();
             return new RequestParam(
-                    apiReq.indicator, "05/09/2021", "05/02/2022", apiCfg.user, apiReq.sublevel,
+                    apiReq.indicatorCompra, Date_6Months_Ago(), Date_Today(), apiCfg.user, apiReq.sublevel,
                     apiCfg.email, apiCfg.token);
         }
 
+        //QUIZ STARTS
         [HttpGet]
         [Route("api/TipoCambio/getTipoCambioCompra")]
         public apiResponse getTipoCambioCompra()
@@ -59,19 +70,6 @@ namespace Ent_Semana3.Controllers
                 response.xml = WSResponse;
                 response.json = json;
 
-                //This is useful as we parse from XML to an object
-                //XmlSerializer serializer = new XmlSerializer(typeof(TiposCambio));
-                //using (StringReader reader = new StringReader(WSResponse))
-                //{
-                //    var tiposCambio = (TiposCambio)serializer.Deserialize(reader);
-
-                //    foreach (TipoCambio tipoCambio in tiposCambio.List)
-                //    {
-                //        logicTipoCambio.Insert(tipoCambio);
-                //    }
-
-                //}
-
                 logicTipoCambio.InsertXML(WSResponse, Int32.Parse(requestParam.Indicador));
 
                 return response;
@@ -89,9 +87,11 @@ namespace Ent_Semana3.Controllers
             apiCfg.getApiConnection();
             apiReq.getApiRequest();
             return new RequestParam(
-                    apiReq.indicator, "05/09/2021", "05/02/2022", apiCfg.user, apiReq.sublevel,
+                    apiReq.indicatorVenta, Date_6Months_Ago(), Date_Today(), apiCfg.user, apiReq.sublevel,
                      apiCfg.email, apiCfg.token);
         }
+
+        //QUIZ ENDS
 
         [HttpGet]
         [Route("api/TipoCambio/getTipoCambioVenta")]
@@ -120,21 +120,7 @@ namespace Ent_Semana3.Controllers
                 response.xml = WSResponse;
                 response.json = json;
 
-                //This is useful as we parse from XML to an object
-                XmlSerializer serializer = new XmlSerializer(typeof(TiposCambio));
-                using (StringReader reader = new StringReader(WSResponse))
-                {
-                    var tiposCambio = (TiposCambio)serializer.Deserialize(reader);
-
-                    foreach (TipoCambio tipoCambio in tiposCambio.List)
-                    {
-                        logicTipoCambio.Insert(tipoCambio);
-
-                    }
-
-                }
-
-               // logicTipoCambio.InsertXML(WSResponse, Int32.Parse(requestParam.Indicador));
+                logicTipoCambio.InsertXML(WSResponse, Int32.Parse(requestParam.Indicador));
 
                 return response;
             }

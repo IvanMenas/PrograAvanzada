@@ -36,10 +36,10 @@ namespace Ent_Semana3.Config
                             string[] connectionKeyValue = i.Split('=');
                             switch (connectionKeyValue[0].ToLower())
                             {
-                                case "indicatorCompra":
+                                case "indicatorcompra":
                                     indicatorCompra = connectionKeyValue[1];
                                     break;
-                                case "indicatorVenta":
+                                case "indicatorventa":
                                     indicatorVenta = connectionKeyValue[1];
                                     break;
                                 case "sublevel":

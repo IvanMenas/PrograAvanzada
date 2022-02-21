@@ -10,9 +10,8 @@
 namespace Ent_Semana3.Database
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class T_TIPOCAMBIO
+    public partial class get_CV_on_LastDay_byMonth_Result
     {
         public long CONSECUTIVO { get; set; }
         public int COD_INDICADORINTERNO { get; set; }

@@ -19,6 +19,8 @@ namespace Ent_Semana3.Controllers
         TipoCambioModel logicTipoCambio = new TipoCambioModel();
         apiConnection apiCfg = new apiConnection();
         apiRequest apiReq = new apiRequest();
+        const string reqTipoCambioVenta_1DayByMonth = "400301";
+        const string reqTipoCambioVenta_15DayByMonth = "400315";
 
         public RequestParam initParamsCompra()
         {
@@ -132,6 +134,26 @@ namespace Ent_Semana3.Controllers
                 }
 
                // logicTipoCambio.InsertXML(WSResponse, Int32.Parse(requestParam.Indicador));
+
+                return response;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        [HttpGet]
+        [Route("api/TipoCambio/getTipoCambioVenta_1DayByMonth")]
+        public apiResponse getTipoCambioVenta_1DayByMonth()
+        {
+            try
+            {
+
+                apiResponse response = new apiResponse();
+                response.code = reqTipoCambioVenta_1DayByMonth;
+                response.json = JsonConvert.SerializeObject(logicTipoCambio.getTipoCambioVenta_1DayByMonth());
 
                 return response;
             }

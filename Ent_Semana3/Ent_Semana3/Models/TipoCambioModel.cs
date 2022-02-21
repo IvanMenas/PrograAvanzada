@@ -51,7 +51,36 @@ namespace Ent_Semana3.Models
             }
         }
 
+        public List<TipoCambio> getTipoCambioVenta_1DayByMonth()
+        {
+            List<TipoCambio> resultado = new List<TipoCambio>();
+            using (var contex = new LN_DBEntities1())
+            {
+                try
+                {
+                    var datos = contex.get_CV_on_1Day_byMonth();
 
+                    foreach (var item in datos.ToList())
+                    {
+                        resultado.Add(new TipoCambio
+                        {
+                            CODINDICADORINTERNO = item.COD_INDICADORINTERNO,
+                            DESFECHA = item.DES_FECHA,
+                            NUMVALOR = item.NUM_VALOR,
+
+                        });
+                    }
+
+                    contex.Dispose();
+                    return resultado;
+                }
+                catch (Exception ex)
+                {
+                    contex.Dispose();
+                    throw ex;
+                }
+            }
+        }
 
     }
 }

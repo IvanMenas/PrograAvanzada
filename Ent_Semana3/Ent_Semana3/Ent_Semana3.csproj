@@ -169,6 +169,12 @@
     <Compile Include="Config\apiRequest.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TipoCambioController.cs" />
+    <Compile Include="Database\getAvg_LastAndCurrentMonth_Result.cs">
+      <DependentUpon>LN_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\getData_ByDiff_Result.cs">
+      <DependentUpon>LN_DB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Database\get_CV_on_15Day_byMonth_Result.cs">
       <DependentUpon>LN_DB.tt</DependentUpon>
     </Compile>

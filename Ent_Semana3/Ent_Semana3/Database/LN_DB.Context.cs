@@ -18,9 +18,8 @@ namespace Ent_Semana3.Database
     public partial class LN_DBEntities1 : DbContext
     {
         public LN_DBEntities1()
-            : base("name=Quiz1")
+            : base("name=LN_DBEntities1")
         {
-            this.Configuration.LazyLoadingEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -56,6 +55,21 @@ namespace Ent_Semana3.Database
         public virtual ObjectResult<get_CV_on_LastDay_byMonth_Result> get_CV_on_LastDay_byMonth()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<get_CV_on_LastDay_byMonth_Result>("get_CV_on_LastDay_byMonth");
+        }
+    
+        public virtual ObjectResult<getAvg_LastAndCurrentMonth_Result> getAvg_LastAndCurrentMonth()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getAvg_LastAndCurrentMonth_Result>("getAvg_LastAndCurrentMonth");
+        }
+    
+        public virtual ObjectResult<getData_ByDiff_Result> getData_ByDiff()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getData_ByDiff_Result>("getData_ByDiff");
+        }
+    
+        public virtual ObjectResult<Nullable<decimal>> get_CV_3HighestValue()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("get_CV_3HighestValue");
         }
     }
 }

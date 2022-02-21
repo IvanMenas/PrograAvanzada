@@ -22,6 +22,11 @@ namespace Ent_Semana3.Controllers
         const string reqTipoCambioVenta_1DayByMonth = "400301";
         const string reqTipoCambioVenta_15DayByMonth = "400315";
         const string reqTipoCambioVenta_LastDayByMonth = "400331";
+        public String Date_12Months_Ago()
+        {
+            return DateTime.Now.AddMonths(-12).ToString("d/M/yyyy");
+
+        }
         public  String Date_6Months_Ago()
         {
             return DateTime.Now.AddMonths(-6).ToString("d/M/yyyy");
@@ -91,8 +96,6 @@ namespace Ent_Semana3.Controllers
                      apiCfg.email, apiCfg.token);
         }
 
-        //QUIZ ENDS
-
         [HttpGet]
         [Route("api/TipoCambio/getTipoCambioVenta")]
         public apiResponse getTipoCambioVenta()
@@ -130,14 +133,15 @@ namespace Ent_Semana3.Controllers
                 throw;
             }
         }
+        //QUIZ ENDS
 
+        // TAREA STARTS
         [HttpGet]
         [Route("api/TipoCambio/getTipoCambioVenta_1DayByMonth")]
         public apiResponse getTipoCambioVenta_1DayByMonth()
         {
             try
             {
-
                 apiResponse response = new apiResponse();
                 response.code = reqTipoCambioVenta_1DayByMonth;
                 response.json = JsonConvert.SerializeObject(logicTipoCambio.getTipoCambioVenta_1DayByMonth());
@@ -151,14 +155,12 @@ namespace Ent_Semana3.Controllers
             }
         }
 
-
         [HttpGet]
         [Route("api/TipoCambio/getTipoCambioVenta_15DayByMonth")]
         public apiResponse getTipoCambioVenta_15DayByMonth()
         {
             try
             {
-
                 apiResponse response = new apiResponse();
                 response.code = reqTipoCambioVenta_15DayByMonth;
                 response.json = JsonConvert.SerializeObject(logicTipoCambio.getTipoCambioVenta_15DayByMonth());
@@ -172,17 +174,72 @@ namespace Ent_Semana3.Controllers
             }
         }
 
-
         [HttpGet]
         [Route("api/TipoCambio/getTipoCambioVenta_LastDayByMonth")]
         public apiResponse getTipoCambioVenta_LastDayByMonth()
         {
             try
             {
-
                 apiResponse response = new apiResponse();
                 response.code = reqTipoCambioVenta_LastDayByMonth;
                 response.json = JsonConvert.SerializeObject(logicTipoCambio.getTipoCambioVenta_LastDayByMonth());
+
+                return response;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        [HttpGet]
+        [Route("api/TipoCambio/getAvg_LastAndCurrentMonth")]
+        public apiResponse getAvg_LastAndCurrentMonth()
+        {
+            try
+            {
+                apiResponse response = new apiResponse();
+                response.code = reqTipoCambioVenta_LastDayByMonth;
+                response.json = JsonConvert.SerializeObject(logicTipoCambio.getAvg_LastAndCurrentMonth());
+
+                return response;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        [HttpGet]
+        [Route("api/TipoCambio/getData_ByDiff")]
+        public apiResponse getData_ByDiff()
+        {
+            try
+            {
+                apiResponse response = new apiResponse();
+                response.code = reqTipoCambioVenta_LastDayByMonth;
+                response.json = JsonConvert.SerializeObject(logicTipoCambio.getData_ByDiff());
+
+                return response;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        [HttpGet]
+        [Route("api/TipoCambio/get_CV_3HighestValue")]
+        public apiResponse get_CV_3HighestValue()
+        {
+            try
+            {
+                apiResponse response = new apiResponse();
+                response.code = reqTipoCambioVenta_LastDayByMonth;
+                response.json = JsonConvert.SerializeObject(logicTipoCambio.get_CV_3HighestValue());
 
                 return response;
             }

@@ -56,4 +56,18 @@ namespace Ent_Semana3.Entities
         public string xml { get; set; }
         public string json { get; set; }
     }
+
+    public class Avg_ByMonth
+    {
+        public string Mes { get; set; }
+        public float AvgCompra { get; set; }
+        public float AvgVenta{ get; set; }
+    }
+
+    public class Data_ByDiff
+    {
+        public decimal Max { get; set; }
+        public decimal Min { get; set; }
+        public decimal Avg { get; set; }
+    }
 }

@@ -25,6 +25,9 @@ namespace Ent_Semana10.Entities
     public class ExchangeRateOutput
     {
         public float Sale { get; set; }
+        public float SaleTransformed { get; set; }
         public float Purchase { get; set; }
+        public float PurchaseTransformed { get; set; }
+
     }
 }

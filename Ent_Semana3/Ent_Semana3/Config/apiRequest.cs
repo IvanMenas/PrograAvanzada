@@ -9,7 +9,8 @@ namespace Ent_Semana3.Config
     public class apiRequest
     {
 
-        public string indicator { get; set; }
+        public string indicatorCompra { get; set; }
+        public string indicatorVenta { get; set; }
         public string sublevel { get; set; }
 
         private string nameConnection;
@@ -35,8 +36,11 @@ namespace Ent_Semana3.Config
                             string[] connectionKeyValue = i.Split('=');
                             switch (connectionKeyValue[0].ToLower())
                             {
-                                case "indicator":
-                                    indicator = connectionKeyValue[1];
+                                case "indicatorcompra":
+                                    indicatorCompra = connectionKeyValue[1];
+                                    break;
+                                case "indicatorventa":
+                                    indicatorVenta = connectionKeyValue[1];
                                     break;
                                 case "sublevel":
                                     sublevel = connectionKeyValue[1];

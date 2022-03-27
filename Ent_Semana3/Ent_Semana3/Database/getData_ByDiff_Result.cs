@@ -10,13 +10,11 @@
 namespace Ent_Semana3.Database
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class T_TIPOCAMBIO
+    public partial class getData_ByDiff_Result
     {
-        public long CONSECUTIVO { get; set; }
-        public int COD_INDICADORINTERNO { get; set; }
-        public System.DateTime DES_FECHA { get; set; }
-        public decimal NUM_VALOR { get; set; }
+        public Nullable<decimal> maximo { get; set; }
+        public Nullable<decimal> minimo { get; set; }
+        public Nullable<decimal> promedio { get; set; }
     }
 }

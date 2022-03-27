@@ -5,7 +5,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="afedfe50195847f999eec2c57eb577b5" Name="Diagram1">
-        <EntityTypeShape EntityType="LN_DBModel.T_TIPOCAMBIO" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LN_DBModel.T_TIPOCAMBIO" Width="3.25" PointX="0.75" PointY="0.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

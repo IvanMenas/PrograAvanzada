@@ -13,7 +13,7 @@ namespace Ent_Semana10.Controllers
         ExchangeRateModel model = new ExchangeRateModel();
 
         [HttpGet]
-        public ActionResult ConsultExhangeRates(float amount)
+        public ActionResult ConsultExchangeRates(float amount)
         {
             var result = model.GetEchangeRate(amount);
 

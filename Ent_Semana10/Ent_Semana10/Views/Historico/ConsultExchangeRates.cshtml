@@ -1,0 +1,32 @@
+﻿@model Ent_Semana10.Entities.ExchangeRateOutput
+
+@model Ent_Semana10.Entities.ExchangeRateInput
+
+@{
+    ViewBag.Title = "ConsultExchangeRates";
+}
+
+<h2>Consultar Tipo de Cambio</h2>
+
+<body>
+    <p>Tipo Cambio Compra</p>
+    <input type="number" id="tcCompra" class="form-control" disabled value=@Model.ExchangeRateOutput />
+
+    <br />
+    <h3>Monto Conversion Colones</h3>
+    <input id="montoColones" type="number" class="form-control" placeholder="Monto en colones" onchange="TipoCambio()" />
+    <br />
+    <p>Monto dolares TCC</p>
+    <input id="tcc" type="number" class="form-control" disabled />
+    <p>Monto dolares TCV</p>
+    <input id="tcv" type="number" class="form-control" disabled />
+
+    <script>
+        function TipoCambio() {
+            compraTC = document.getElementById("tcCompra").value;
+            colones = document.getElementById("montoColones").value;
+            document.getElementById("tcc").value = colones / compraTC;
+        }
+    </script>
+</body>
+
